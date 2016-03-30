@@ -1,7 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script data-main="app" src="lib/require.js"></script>
+        <meta charset="utf-8">
+        <!--配置require的第一种方式：data-main + requirejs.config  -->
+        <!--data-main="ap.js" 在该文件当前目录加载ap.js文件，一般在这里使用requirejs.config配置文件-->
+        <!--因为会自动添加.js加载文件，data-main="ap"也是可以的-->
+        <script data-main="ap.js" src="lib/require.js"></script>
+        <script type="text/javascript">
+            require(['ap'], function() {
+                //因为foo的加载需要先执行ap.js,所以，需要确认ap加载完成后才能执行
+                require(['../app/foo', 'print'], function(foo, print) {
+                    print(foo.getHello());
+                });
+            });
+        </script>
     </head>
     <body>
         <h1>Hello World</h1>
