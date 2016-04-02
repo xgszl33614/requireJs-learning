@@ -6,6 +6,6 @@ define(function (require) {
 
     var print = require('print');
 
-    print(messages.getHello());
-    print(messages2.getHello());
+    print("msg1:"+messages.getHello());
+    print("msg2:"+messages2.getHello());
 });
